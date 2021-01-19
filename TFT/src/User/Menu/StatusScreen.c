@@ -274,19 +274,19 @@ void menuStatus(void)
     {
       case KEY_ICON_0:
         heatSetCurrentIndex(current_tool);
-        infoMenu.menu[++infoMenu.cur] = menuHeat;
+        // infoMenu.menu[++infoMenu.cur] = menuHeat; //Tobbe
         break;
       case KEY_ICON_1:
         heatSetCurrentIndex(BED);
-        infoMenu.menu[++infoMenu.cur] = menuHeat;
+        //infoMenu.menu[++infoMenu.cur] = menuHeat; //Tobbe
         break;
       case KEY_ICON_2:
-        infoMenu.menu[++infoMenu.cur] = menuFan;
+        //infoMenu.menu[++infoMenu.cur] = menuFan; //Tobbe
         break;
       case KEY_SPEEDMENU:
         SET_SPEEDMENUINDEX(0);
-        infoMenu.menu[++infoMenu.cur] = menuSpeed;
-        break;
+        //infoMenu.menu[++infoMenu.cur] = menuSpeed; //Tobbe
+        break; 
       #ifdef TFT70_V3_0
         case KEY_FLOWMENU:
           SET_SPEEDMENUINDEX(1);
@@ -297,7 +297,7 @@ void menuStatus(void)
         infoMenu.menu[++infoMenu.cur] = unifiedMenu;
         break;
       case KEY_ICON_7:
-        infoMenu.menu[++infoMenu.cur] = menuPrint;
+        //infoMenu.menu[++infoMenu.cur] = menuPrint; //Tobbe
         break;
       case KEY_INFOBOX:
         infoMenu.menu[++infoMenu.cur] = menuNotification;

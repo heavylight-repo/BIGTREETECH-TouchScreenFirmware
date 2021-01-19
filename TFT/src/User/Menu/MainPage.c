@@ -28,15 +28,15 @@ void unifiedMenu(void)
     switch (key_num)
     {
       case KEY_ICON_0:
-        infoMenu.menu[++infoMenu.cur] = menuUnifiedHeat;
+        //infoMenu.menu[++infoMenu.cur] = menuUnifiedHeat; //Tobbe
         break;
 
       case KEY_ICON_1:
-        infoMenu.menu[++infoMenu.cur] = menuUnifiedMove;
+        //infoMenu.menu[++infoMenu.cur] = menuUnifiedMove; //Tobbe
         break;
 
       case KEY_ICON_2:
-        infoMenu.menu[++infoMenu.cur] = menuExtrude;
+        //infoMenu.menu[++infoMenu.cur] = menuExtrude; //Tobbe
         break;
 
       case KEY_ICON_3:

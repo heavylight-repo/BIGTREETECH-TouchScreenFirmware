@@ -125,7 +125,7 @@
 /**
  * Show bootscreen when starting up
  */
-#define SHOW_BTT_BOOTSCREEN
+//#define SHOW_BTT_BOOTSCREEN //Tobbe
 
 /**
  * The duration and frequency for the UI feedback sound.
@@ -175,9 +175,9 @@
 #define LISTVIEW_BORDER_COLOR      15 // Border color in List view
 #define LISTVIEW_ICON_COLOR        15 // icon color in List view
 
-#define HOTEND_NUM   1    // set in 1~6
-#define EXTRUDER_NUM 1    // set in 1~6
-#define FAN_NUM      1    // set in 1~6
+#define HOTEND_NUM   0    // set in 1~6 //TOBBE
+#define EXTRUDER_NUM 0    // set in 1~6 //TOBBE
+#define FAN_NUM      0    // set in 1~6 //TOBBE
 #define FAN_CTRL_NUM 0    // set in 1~2
 #define MIXING_EXTRUDER 0 // set default 0, for mixing_extruder 1 (this option turns off autodetection of the number of extruders)
 
