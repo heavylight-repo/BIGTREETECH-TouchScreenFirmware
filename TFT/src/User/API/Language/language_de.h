@@ -50,12 +50,13 @@
     #define STRING_ABL_SLOT_EEPROM        "Slot für den nächsten\nNeustart merken?(Im EEPROM speichern)"
     #define STRING_ABL_Z                  "Z Fade"
     #define STRING_BLTOUCH                "BLTouch"
-    #define STRING_BLTOUCH_TEST           "testen"
-    #define STRING_BLTOUCH_DEPLOY         "ausfahren"
-    #define STRING_BLTOUCH_STOW           "einziehen"
-    #define STRING_BLTOUCH_REPEAT         "widerholen"
+    #define STRING_TEST                   "testen"
+    #define STRING_DEPLOY                 "ausfahren"
+    #define STRING_STOW                   "einziehen"
+    #define STRING_REPEAT                 "widerholen"
     #define STRING_Z_OFFSET               "Delta Z"
     #define STRING_PROBE_OFFSET           "Delta Fühler"
+    #define STRING_HOME_OFFSET            "Home Offset"
     #define STRING_CONFIRMATION           "Sicher?"
     #define STRING_DOWN                   "ab"
     #define STRING_UP                     "auf"
@@ -85,6 +86,8 @@
     #define STRING_RESUME                 "Wiederaufnahme"
     #define STRING_LOAD                   "laden"
     #define STRING_UNLOAD                 "entladen"
+    #define STRING_LOAD_UNLOAD            "Load/Unload"  // needs translation
+    #define STRING_LOAD_UNLOAD_SHORT      "(Un)Load"  // needs translation
     #define STRING_SLOW_SPEED             "langsam"
     #define STRING_NORMAL_SPEED           "normal"
     #define STRING_FAST_SPEED             "schnell"
@@ -201,7 +204,7 @@
     #define STRING_SEND_END_GCODE         "Gcode nach Druck"
     #define STRING_SEND_CANCEL_GCODE      "Gcode bei Abbruch"
     #define STRING_PERSISTENT_STATUS_INFO "Speicherungs-Status"
-    #define STRING_FILE_LISTMODE          "Datein als Liste"
+    #define STRING_FILE_LISTMODE          "Dateien als Liste"
     #define STRING_CURRENT_SETTING        "Treiber Strom (mA)"
     #define STRING_STEPS_SETTING          "Steps pro mm"
     #define STRING_MAXFEEDRATE            "max. Geschwindigkeit"
@@ -276,5 +279,24 @@
     #define STRING_MESH_EDITOR            "Mesh edit."
     #define STRING_MESH_TUNER             "Mesh anp."
     #define STRING_CASE_LIGHT             "Case light"
+    #define STRING_LOAD_STARTED           "Loading filament.\nPlease wait for the process\nto complete."  // translation needed
+    #define STRING_UNLOAD_STARTED         "Unloading filament.\nPlease wait for the process\nto complete."  // translation needed
+    #define STRING_HEATERS_ON             "Some heaters are still ON.\nDo you want to stop them?"  // translation needed
+    #define STRING_PRINT_FINISHED         "Print finished"
+    #define STRING_MAIN_SCREEN            "Main"
+    #define STRING_PREVIOUS_PRINT_DATA    "Brief"
+    #define STRING_PRINT_TIME             "Print Time: %02u:%02u:%02u\n"
+    #define STRING_FILAMENT_LENGTH        "Filament length: %1.2fm\n"
+    #define STRING_FILAMENT_WEIGHT        "Filament weight: %1.2fg\n"
+    #define STRING_FILAMENT_COST          "Filament cost: %1.2f\n"
+    #define STRING_NO_FILAMENT_STATS      "Filament data not available."
+    #define STRING_CLICK_FOR_MORE         "Click for summary"
+    #define STRING_EXT_TEMPLOW            "Hotend temperature is below\nminimum temperature (%d℃)."
+    #define STRING_COLD_EXT               "Cold extrusion prevented"
+    #define STRING_HEAT_HOTEND            "Heat hotend to %d℃?"
+    #define STRING_Z_ALIGN                "Z Align"
+    #define STRING_INIT                   "Init"
+    #define STRING_TOUCHMI                "TouchMi"
+
 
 #endif

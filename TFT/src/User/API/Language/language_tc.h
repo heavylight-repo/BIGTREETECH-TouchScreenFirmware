@@ -50,12 +50,13 @@
     #define STRING_ABL_SLOT_EEPROM        "Remember slot for next\nreboot? (Save EEPROM)"
     #define STRING_ABL_Z                  "Z Fade"
     #define STRING_BLTOUCH                "BLTouch "
-    #define STRING_BLTOUCH_TEST           "BLTouch檢測"
-    #define STRING_BLTOUCH_DEPLOY         "探針彈出"
-    #define STRING_BLTOUCH_STOW           "探針收回"
-    #define STRING_BLTOUCH_REPEAT         "精度測試"
+    #define STRING_TEST                   "BLTouch檢測"
+    #define STRING_DEPLOY                 "探針彈出"
+    #define STRING_STOW                   "探針收回"
+    #define STRING_REPEAT                 "精度測試"
     #define STRING_Z_OFFSET               "Z軸偏移"
     #define STRING_PROBE_OFFSET           "探針偏移"
+    #define STRING_HOME_OFFSET            "Home Offset"
     #define STRING_CONFIRMATION           "Are you sure?"
     #define STRING_DOWN                   "降低"
     #define STRING_UP                     "抬升"
@@ -85,6 +86,8 @@
     #define STRING_RESUME                 "繼續"
     #define STRING_LOAD                   "進料"
     #define STRING_UNLOAD                 "退料"
+    #define STRING_LOAD_UNLOAD            "Load/Unload"  // needs translation
+    #define STRING_LOAD_UNLOAD_SHORT      "(Un)Load"  // needs translation
     #define STRING_SLOW_SPEED             "慢速"
     #define STRING_NORMAL_SPEED           "常速"
     #define STRING_FAST_SPEED             "快速"
@@ -276,5 +279,24 @@
     #define STRING_MESH_EDITOR            "Mesh edit"
     #define STRING_MESH_TUNER             "Mesh tuner"
     #define STRING_CASE_LIGHT             "Case light"
+    #define STRING_LOAD_STARTED           "Loading filament.\nPlease wait for the process\nto complete."  // translation needed
+    #define STRING_UNLOAD_STARTED         "Unloading filament.\nPlease wait for the process\nto complete."  // translation needed
+    #define STRING_HEATERS_ON             "Some heaters are still ON.\nDo you want to stop them?"  // translation needed
+    #define STRING_PRINT_FINISHED         "Print finished"
+    #define STRING_MAIN_SCREEN            "Main"
+    #define STRING_PREVIOUS_PRINT_DATA    "Brief"
+    #define STRING_FILE_NAME              "File: "
+    #define STRING_PRINT_TIME             "Print Time: %02u:%02u:%02u\n"
+    #define STRING_FILAMENT_LENGTH        "Filament length: %1.2fm\n"
+    #define STRING_FILAMENT_WEIGHT        "Filament weight: %1.2fg\n"
+    #define STRING_FILAMENT_COST          "Filament cost: %1.2f\n"
+    #define STRING_NO_FILAMENT_STATS      "Filament data not available."
+    #define STRING_CLICK_FOR_MORE         "Click for summary"
+    #define STRING_EXT_TEMPLOW            "Hotend temperature is below\nminimum temperature (%d℃)."
+    #define STRING_COLD_EXT               "Cold extrusion prevented"
+    #define STRING_HEAT_HOTEND            "Heat hotend to %d℃?"
+    #define STRING_Z_ALIGN                "Z Align"
+    #define STRING_INIT                   "Init"
+    #define STRING_TOUCHMI                "TouchMi"
 
 #endif

@@ -1,7 +1,7 @@
 #include "BedLeveling.h"
 #include "includes.h"
 
-void blUpdateState(MENUITEMS *menu)
+static inline void blUpdateState(MENUITEMS *menu)
 {
   if (getParameter(P_ABL_STATE, 0) == ENABLED)
   {
@@ -23,7 +23,7 @@ void menuBedLeveling(void)
     LABEL_ABL_SETTINGS,
     // icon                         label
     {{ICON_LEVELING,                LABEL_ABL},
-     {ICON_LEVELING,                LABEL_MESH_EDITOR},
+     {ICON_MESH_EDITOR,             LABEL_MESH_EDITOR},
      {ICON_BACKGROUND,              LABEL_BACKGROUND},
      {ICON_BACKGROUND,              LABEL_BACKGROUND},
      {ICON_PROBE_OFFSET,            LABEL_Z_OFFSET},
@@ -69,6 +69,12 @@ void menuBedLeveling(void)
     bedLevelingItems.items[6].icon = ICON_LEVELING_OFF;
     bedLevelingItems.items[6].label.index = LABEL_BL_DISABLE;
   }
+  
+  if (infoSettings.z_steppers_alignment)
+  {
+    bedLevelingItems.items[2].icon = ICON_Z_ALIGN;
+    bedLevelingItems.items[2].label.index = LABEL_Z_ALIGN;
+  }
 
   menuDrawPage(&bedLevelingItems);
 
@@ -84,6 +90,11 @@ void menuBedLeveling(void)
       case KEY_ICON_1:
         infoMenu.menu[++infoMenu.cur] = menuMeshEditor;
         break;
+        
+      case KEY_ICON_2:
+        if (infoSettings.z_steppers_alignment)
+          storeCmd("G34\n");
+        break;
 
       case KEY_ICON_4:
         storeCmd("M851\n");
@@ -91,28 +102,22 @@ void menuBedLeveling(void)
         break;
 
       case KEY_ICON_5:
-        {
-          char tempstr[30];
+      {
+        char tempstr[30];
+        sprintf(tempstr, "%Min:%.2f | Max:%.2f", Z_FADE_MIN_VALUE, Z_FADE_MAX_VALUE);
 
-          sprintf(tempstr, "%Min:%.2f | Max:%.2f", Z_FADE_MIN_VALUE, Z_FADE_MAX_VALUE);
+        float val = numPadFloat((u8 *) tempstr, getParameter(P_ABL_STATE, 1), 0.0f, false);
+        storeCmd("M420 Z%.2f\n", NOBEYOND(Z_FADE_MIN_VALUE, val, Z_FADE_MAX_VALUE));
 
-          float val = numPadFloat((u8 *) tempstr, getParameter(P_ABL_STATE, 1), 0.0f, false);
-
-          storeCmd("M420 Z%.2f\n", NOBEYOND(Z_FADE_MIN_VALUE, val, Z_FADE_MAX_VALUE));
-
-          menuDrawPage(&bedLevelingItems);
-        }
+        menuDrawPage(&bedLevelingItems);
         break;
+      }
 
       case KEY_ICON_6:
         if (getParameter(P_ABL_STATE, 0) == ENABLED)
-        {
           storeCmd("M420 S0\n");
-        }
         else
-        {
           storeCmd("M420 S1\n");
-        }
         break;
 
       case KEY_ICON_7:
