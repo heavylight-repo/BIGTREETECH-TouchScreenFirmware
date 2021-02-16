@@ -23,8 +23,8 @@ const GUI_POINT clocks[] = {
   {1 * LCD_WIDTH / 3, 1 * BYTE_HEIGHT},
   {2 * LCD_WIDTH / 3, 1 * BYTE_HEIGHT},};
 
-static uint8_t firmare_name[64] = "Unknow system"; // Marlin firmware version
-uint8_t machine_type[64] = "3D Printer"; // Marlin machine type
+static uint8_t firmare_name[64] = "Leantronic"; // Marlin firmware version //Tobbe
+uint8_t machine_type[64] = "Pipetting robot"; // Marlin machine type //Tobbe
 
 void infoSetFirmwareName(uint8_t *name, uint8_t name_len)
 {
@@ -56,7 +56,7 @@ void menuInfo(void)
 {
   char buf[128];
 
-  const char *const hardware = "BIGTREETECH_" HARDWARE_VERSION;
+  const char *const hardware = "" HARDWARE_VERSION; //Tobbe
   const char *const firmware = HARDWARE_VERSION"." STRINGIFY(SOFTWARE_VERSION) " " __DATE__;
 
   GUI_Clear(infoSettings.bg_color);

@@ -8,17 +8,18 @@ void menuMain(void)
     // title
     LABEL_MAINMENU,
     // icon                         label
-    {{ICON_HEAT_FAN,                LABEL_UNIFIEDHEAT},
-     {ICON_HOME_MOVE,               LABEL_UNIFIEDMOVE},
-    #ifdef LOAD_UNLOAD_M701_M702
-      {ICON_EXTRUDE,                 LABEL_LOAD_UNLOAD_SHORT},
-    #else
-      {ICON_EXTRUDE,                 LABEL_EXTRUDE},
-    #endif
+    {{ICON_HOME,                    LABEL_HOME},   //Tobbe
+     {ICON_HOME_MOVE,               LABEL_UNIFIEDMOVE},   //Tobbe
+     {ICON_CONNECTION_SETTINGS,     LABEL_CONNECTION_SETTINGS}, //Tobbe
+    //#ifdef LOAD_UNLOAD_M701_M702                              //Tobbe
+    //  {ICON_EXTRUDE,                 LABEL_LOAD_UNLOAD_SHORT},//Tobbe
+    //#else                                                     //Tobbe
+    //  {ICON_EXTRUDE,                 LABEL_EXTRUDE},          //Tobbe
+    //#endif
      {ICON_STOP,                    LABEL_EMERGENCYSTOP},
-     {ICON_GCODE,                   LABEL_TERMINAL},
-     {ICON_CUSTOM,                  LABEL_CUSTOM},
-     {ICON_SETTINGS,                LABEL_SETTINGS},
+     {ICON_SCREEN_SETTINGS,         LABEL_SCREEN_SETTINGS},
+     {ICON_RGB_SETTINGS,            LABEL_RGB_SETTINGS},
+     {ICON_SCREEN_INFO,             LABEL_SCREEN_INFO},
      {ICON_BACK,                    LABEL_BACK},}
   };
 
@@ -39,17 +40,18 @@ void menuMain(void)
     {
       case KEY_ICON_0:
         //infoMenu.menu[++infoMenu.cur] = menuUnifiedHeat; //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuHome; //Tobbe
         break;
 
       case KEY_ICON_1:
-        //infoMenu.menu[++infoMenu.cur] = menuUnifiedMove; //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuUnifiedMove; //Tobbe
         break;
 
       case KEY_ICON_2:
         #ifdef LOAD_UNLOAD_M701_M702
-          //infoMenu.menu[++infoMenu.cur] = menuLoadUnload; //Tobbe
+          infoMenu.menu[++infoMenu.cur] = menuConnectionSettings; //Tobbe
         #else
-          //infoMenu.menu[++infoMenu.cur] = menuExtrude; //Tobbe
+          infoMenu.menu[++infoMenu.cur] = menuExtrude; //Tobbe
         #endif
         break;
 
@@ -61,15 +63,15 @@ void menuMain(void)
         break;
 
       case KEY_ICON_4:
-        infoMenu.menu[++infoMenu.cur] = menuSendGcode;
+        infoMenu.menu[++infoMenu.cur] = menuScreenSettings;
         break;
 
       case KEY_ICON_5:
-        infoMenu.menu[++infoMenu.cur] = menuCustom;
+        infoMenu.menu[++infoMenu.cur] = menuRGBSettings;
         break;
 
       case KEY_ICON_6:
-        infoMenu.menu[++infoMenu.cur] = menuSettings;
+        infoMenu.menu[++infoMenu.cur] = menuInfo;
         break;
 
       case KEY_ICON_7:

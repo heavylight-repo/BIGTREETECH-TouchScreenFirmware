@@ -16,7 +16,7 @@
 
 // Enable Status Screen
 // Enable this to show status screen as the default home screen. Disabling it will show a static menu.
-#define ENABLE_STATUS_SCREEN true // To enabled: true | To disabled: false (Default: 1)
+#define ENABLE_STATUS_SCREEN false // To enabled: true | To disabled: false (Default: 1)
 
 /**
  * This setting determines the communication speed of the printer.

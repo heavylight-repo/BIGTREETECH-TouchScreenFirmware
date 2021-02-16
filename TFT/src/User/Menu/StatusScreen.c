@@ -14,15 +14,15 @@ const MENUITEMS StatusItems = {
   // title
   LABEL_READY,
   // icon                         label
-  {{ICON_STATUS_NOZZLE,           LABEL_BACKGROUND},
-   {ICON_STATUS_BED,              LABEL_BACKGROUND},
-   {ICON_STATUS_FAN,              LABEL_BACKGROUND},
-   {ICON_STATUS_SPEED,            LABEL_BACKGROUND},
+  {{ICON_HOME,                    LABEL_HOME},   //Tobbe
+   {ICON_HOME_MOVE,               LABEL_UNIFIEDMOVE},   //Tobbe
+   {ICON_SCREEN_SETTINGS,         LABEL_SCREEN_SETTINGS},   //Tobbe
+   {ICON_SCREEN_INFO,             LABEL_SCREEN_INFO},   //Tobbe
 #ifdef TFT70_V3_0
    {ICON_STATUS_FLOW,             LABEL_BACKGROUND},
    {ICON_MAINMENU,                LABEL_MAINMENU},
 #else
-   {ICON_MAINMENU,                LABEL_MAINMENU},
+   {ICON_STOP,                    LABEL_EMERGENCYSTOP}, //Tobbe
    {ICON_BACKGROUND,              LABEL_BACKGROUND},
 #endif
    {ICON_BACKGROUND,              LABEL_BACKGROUND},
@@ -80,7 +80,7 @@ void drawTemperature(void)
   lvIcon.lines[1].text_mode = GUI_TEXTMODE_TRANS;
   lvIcon.lines[1].pos = ss_val_point;
   lvIcon.lines[1].large_font = VAL_LARGE_FONT;
-
+/* //Tobbe
   #ifndef TFT70_V3_0
     lvIcon.enabled[2] = false;
   #else
@@ -163,7 +163,7 @@ void drawTemperature(void)
     lvIcon.lines[1].text = (u8 *)tempstr;
     showLiveInfo(3, &lvIcon, &SpeedItems[currentSpeedID]);
   #endif
-
+*/
   GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
   GUI_SetColor(GANTRYLBL_COLOR);
   GUI_SetBkColor(infoSettings.status_xyz_bg_color);
@@ -232,6 +232,7 @@ static inline void toggleTool(void)
 {
   if (nextScreenUpdate(UPDATE_TOOL_TIME))
   {
+    
     if (infoSettings.hotend_count > 1)
     {
       currentTool = (currentTool+1) % infoSettings.hotend_count;
@@ -275,19 +276,19 @@ void menuStatus(void)
     switch (key_num)
     {
       case KEY_ICON_0:
-        heatSetCurrentIndex(currentTool);
-        //infoMenu.menu[++infoMenu.cur] = menuHeat; //Tobbe
+        //heatSetCurrentIndex(currentTool); //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuHome; //Tobbe
         break;
       case KEY_ICON_1:
-        heatSetCurrentIndex(BED);
-        //infoMenu.menu[++infoMenu.cur] = menuHeat; //Tobbe
+        //heatSetCurrentIndex(BED); //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuUnifiedMove; //Tobbe
         break;
       case KEY_ICON_2:
-        //infoMenu.menu[++infoMenu.cur] = menuFan; //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuScreenSettings; //Tobbe
         break;
       case KEY_SPEEDMENU:
-        SET_SPEEDMENUINDEX(0);
-        //infoMenu.menu[++infoMenu.cur] = menuSpeed; //Tobbe
+        //SET_SPEEDMENUINDEX(0); //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuInfo; //Tobbe
         break; 
       #ifdef TFT70_V3_0
         case KEY_FLOWMENU:
@@ -296,10 +297,13 @@ void menuStatus(void)
           break;
       #endif
       case KEY_MAINMENU:
-        infoMenu.menu[++infoMenu.cur] = menuMain;
+        // Emergency Stop : Used for emergency stopping, a reset is required to return to operational mode.
+        // it may need to wait for a space to open up in the command queue.
+        // Enable EMERGENCY_PARSER in Marlin Firmware for an instantaneous M112 command.
+        Serial_Puts(SERIAL_PORT, "M112\n");
         break;
       case KEY_ICON_7:
-        //infoMenu.menu[++infoMenu.cur] = menuPrint; //Tobbe
+        infoMenu.menu[++infoMenu.cur] = menuPrint; //Tobbe
         break;
       case KEY_INFOBOX:
         infoMenu.menu[++infoMenu.cur] = menuNotification;
