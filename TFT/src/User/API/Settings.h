@@ -146,6 +146,7 @@ typedef struct
   uint16_t level_feedrate[FEEDRATE_COUNT - 1];  // XY, Z
   uint16_t preheat_temp[PREHEAT_COUNT];
   uint16_t preheat_bed[PREHEAT_COUNT];
+  uint8_t  set_number_of_samples; //Tobbe
 
   uint8_t  move_speed;  // index on infoSettings.axis_speed, infoSettings.ext_speed
 

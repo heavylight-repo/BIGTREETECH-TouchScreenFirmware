@@ -6,7 +6,7 @@
     #define STRING_MOVE                   "Move"
     #define STRING_HOME                   "Home"
     #define STRING_DISABLE_STEPPERS       "Disarm All"
-    #define STRING_PRINT                  "Print"
+    #define STRING_PRINT                  "Run" //Tobbe
     #define STRING_EXTRUDE                "Extrude"
     #define STRING_FAN                    "Fan"
     #define STRING_SETTINGS               "Settings"
@@ -150,7 +150,7 @@
     #define STRING_PERCENT_VALUE          "%d%%"
     #define STRING_READY                  "Ready"
     #define STRING_BUSY                   "Busy processing, please wait..."
-    #define STRING_UNCONNECTED            "No printer attached!"
+    #define STRING_UNCONNECTED            "No Robot attached!" //Tobbe
     #define STRING_DISCONNECT_INFO        "Now you can control the printer by your computer!"
     #define STRING_LOADING                "Loading..."
     #define STRING_POWER_FAILED           "Continue printing?" //Question Sign
@@ -163,7 +163,7 @@
     #define STRING_WARNING                "Warning" //Exclamation Sign
     #define STRING_STOP_PRINT             "Stop printing?"
     #define STRING_CONFIRM                "\u088E OK" //Confirm Sign
-    #define STRING_TFTSD                  "TFT SD"
+    #define STRING_TFTSD                  "Method" //Tobbe
     #define STRING_READ_TFTSD_ERROR       "Read TFT SD card error!"
     #define STRING_TFTSD_INSERTED         "Card inserted!"
     #define STRING_TFTSD_REMOVED          "Card removed!"
@@ -297,5 +297,6 @@
     #define STRING_Z_ALIGN                "Z Align"
     #define STRING_INIT                   "Init"
     #define STRING_TOUCHMI                "TouchMi"
+    #define STRING_SAMPLES               "Samples" //Tobbe
 
 #endif

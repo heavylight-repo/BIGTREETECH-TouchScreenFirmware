@@ -78,6 +78,8 @@ void infoSettingsReset(void)
   infoSettings.level_z_pos            = LEVELING_POINT_Z;
   infoSettings.level_z_raise          = LEVELING_POINT_MOVE_Z;
 
+  infoSettings.set_number_of_samples  = 1; //Tobbe
+
   infoSettings.move_speed             = 1; // index on infoSettings.axis_speed, infoSettings.ext_speed
 
 // Power Supply Settings

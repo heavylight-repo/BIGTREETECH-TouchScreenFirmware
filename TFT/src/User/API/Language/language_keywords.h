@@ -304,6 +304,7 @@ extern "C" {
 #define LANG_KEY_Z_ALIGN                      "label_z_align:"
 #define LANG_KEY_INIT                         "label_init:"
 #define LANG_KEY_TOUCHMI                      "label_touchmi:"
+#define LANG_KEY_SAMPLES                      "label_samples:" //Tobbe
 
 #ifdef __cplusplus
 }

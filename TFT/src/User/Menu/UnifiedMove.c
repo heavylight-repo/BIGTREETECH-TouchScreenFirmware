@@ -8,12 +8,12 @@ void menuUnifiedMove(void)
     // title
     LABEL_UNIFIEDMOVE,
     // icon                         label
-    {{ICON_HOME,                    LABEL_HOME},
-     {ICON_MOVE,                    LABEL_MOVE},
-     {ICON_EXTRUDE,                 LABEL_EXTRUDE},
+    {{ICON_MOVE,                    LABEL_MOVE}, //Tobbe
      {ICON_DISABLE_STEPPERS,        LABEL_DISABLE_STEPPERS},
-     {ICON_BABYSTEP,                LABEL_BABYSTEP},
-     {ICON_MANUAL_LEVEL,            LABEL_LEVELING},
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
      {ICON_BACKGROUND,              LABEL_BACKGROUND},
      {ICON_BACK,                    LABEL_BACK}}
   };
@@ -34,32 +34,34 @@ void menuUnifiedMove(void)
     switch(key_num)
     {
       case KEY_ICON_0:
-        infoMenu.menu[++infoMenu.cur] = menuHome;
-        break;
-
-      case KEY_ICON_1:
+        //infoMenu.menu[++infoMenu.cur] = menuHome; //Tobbe
         infoMenu.menu[++infoMenu.cur] = menuMove;
         break;
 
-      case KEY_ICON_2:
-        infoMenu.menu[++infoMenu.cur] = menuExtrude;
-        break;
-
-      case KEY_ICON_3:
+      case KEY_ICON_1:
+        //infoMenu.menu[++infoMenu.cur] = menuMove; //Tobbe
         storeCmd("M84\n");
         break;
 
+      case KEY_ICON_2:
+        //infoMenu.menu[++infoMenu.cur] = menuExtrude; //Tobbe
+        break;
+
+      case KEY_ICON_3:
+        //storeCmd("M84\n"); //Tobbe
+        break;
+
       case KEY_ICON_4:
-        infoMenu.menu[++infoMenu.cur] = menuBabystep;
+        //infoMenu.menu[++infoMenu.cur] = menuBabystep; //Tobbe
         break;
 
       case KEY_ICON_5:
-        infoMenu.menu[++infoMenu.cur] = menuManualLeveling;
+        //infoMenu.menu[++infoMenu.cur] = menuManualLeveling; //Tobbe
         break;
 
       case KEY_ICON_6:
         if (infoMachineSettings.leveling != BL_DISABLED)
-          infoMenu.menu[++infoMenu.cur] = menuBedLeveling;
+          //infoMenu.menu[++infoMenu.cur] = menuBedLeveling; //Tobbe
         break;
 
       case KEY_ICON_7:

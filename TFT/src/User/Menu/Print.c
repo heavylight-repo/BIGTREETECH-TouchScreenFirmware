@@ -368,25 +368,41 @@ void menuPrint(void)
   MENUITEMS sourceSelItems = {
     // title
     LABEL_PRINT,
-    // icon                         label
+    // icon                         label //Tobbe
+    {{ICON_ONTFT_SD,               LABEL_TFTSD},
+    {ICON_SAMPLES,                 LABEL_SAMPLES},
+    {ICON_SCREEN_INFO,             LABEL_PREVIOUS_PRINT_DATA}, //Tobbe Number of Samples
+    {ICON_BACKGROUND,              LABEL_BACKGROUND},
+    {ICON_BACKGROUND,              LABEL_BACKGROUND},
+    {ICON_BACKGROUND,              LABEL_BACKGROUND},
+    {ICON_BACKGROUND,              LABEL_BACKGROUND},
+    {ICON_BACK,                    LABEL_BACK},}
+  };
+
+/* //Tobbe
+  MENUITEMS sourceSelItems = {
+    // title
+    LABEL_PRINT,
+    // icon                         label //Tobbe
     {{ICON_ONTFT_SD,                LABEL_TFTSD},
   #ifdef U_DISK_SUPPORT
      {ICON_U_DISK,                  LABEL_U_DISK},
     #define ONBOARD_SD_INDEX 2
   #else
     #define ONBOARD_SD_INDEX 1
-     {ICON_BACKGROUND,              LABEL_BACKGROUND},
-  #endif
-    {ICON_BACKGROUND,           LABEL_BACKGROUND},
-    {ICON_BACKGROUND,           LABEL_BACKGROUND},
     {ICON_SCREEN_INFO,          LABEL_PREVIOUS_PRINT_DATA},
+  #endif
+    {ICON_SCREEN_INFO,          LABEL_PREVIOUS_PRINT_DATA},
+    {ICON_BACKGROUND,           LABEL_BACKGROUND},
+    {ICON_BACKGROUND,           LABEL_BACKGROUND},
     {ICON_BACKGROUND,           LABEL_BACKGROUND},
     {ICON_BACKGROUND,           LABEL_BACKGROUND},
     {ICON_BACK,                 LABEL_BACK}}
   };
+  */
 
-  sourceSelItems.items[ONBOARD_SD_INDEX].icon = (infoMachineSettings.onboard_sd_support == ENABLED) ? ICON_ONBOARD_SD : ICON_BACKGROUND;
-  sourceSelItems.items[ONBOARD_SD_INDEX].label.index = (infoMachineSettings.onboard_sd_support == ENABLED) ? LABEL_ONBOARDSD : LABEL_BACKGROUND;
+  //sourceSelItems.items[ONBOARD_SD_INDEX].icon = (infoMachineSettings.onboard_sd_support == ENABLED) ? ICON_ONBOARD_SD : ICON_BACKGROUND; //Tobbe
+  //sourceSelItems.items[ONBOARD_SD_INDEX].label.index = (infoMachineSettings.onboard_sd_support == ENABLED) ? LABEL_ONBOARDSD : LABEL_BACKGROUND; //Tobbe
 
   menuDrawPage(&sourceSelItems);
   while(infoMenu.menu[infoMenu.cur] == menuPrint)
@@ -400,28 +416,44 @@ void menuPrint(void)
         infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
         infoMenu.menu[++infoMenu.cur] = menuPowerOff;
         goto selectEnd;
+      break;
 
-    #ifdef U_DISK_SUPPORT
+    //#ifdef U_DISK_SUPPORT //Tobbe
+      //case KEY_ICON_1:
+        //list_mode = infoSettings.file_listmode; //follow list mode setting in usb disk
+        //infoFile.source = TFT_UDISK;
+        //infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
+        //infoMenu.menu[++infoMenu.cur] = menuPowerOff;
+        //goto selectEnd;
+      //case KEY_ICON_2:
+    //#else
       case KEY_ICON_1:
-        list_mode = infoSettings.file_listmode; //follow list mode setting in usb disk
-        infoFile.source = TFT_UDISK;
-        infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
-        infoMenu.menu[++infoMenu.cur] = menuPowerOff;
-        goto selectEnd;
-      case KEY_ICON_2:
-    #else
-      case KEY_ICON_1:
-    #endif
-        if (infoMachineSettings.onboard_sd_support == ENABLED)
+    //#endif //Tobbe
         {
-          list_mode = true; //force list mode in Onboard sd card
-          infoFile.source = BOARD_SD;
-          infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;   //TODO: fix here,  onboard sd card PLR feature
-          goto selectEnd;
+          int MIN_SAMPLES = 1; //Tobbe
+          int MAX_SAMPLES = 1000;
+          char tempstr[30];
+          sprintf(tempstr, "%Min:%d | Max:%d", MIN_SAMPLES, MAX_SAMPLES);
+
+          int val = numPadInt((u8 *)tempstr, infoSettings.set_number_of_samples, 0, false);
+          infoSettings.set_number_of_samples = NOBEYOND(MIN_SAMPLES, val, MAX_SAMPLES);
+
+          storeCmd("M3000 S%d\n", infoSettings.set_number_of_samples);
+          //mustStoreCmd("M3000 S%d\n", infoSettings.set_number_of_samples);
+
+          menuDrawPage(&sourceSelItems);
         }
+
+        //if (infoMachineSettings.onboard_sd_support == ENABLED) //Tobbe
+        //{
+        //  list_mode = true; //force list mode in Onboard sd card
+        //  infoFile.source = BOARD_SD;
+        //  infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;   //TODO: fix here,  onboard sd card PLR feature
+        //  goto selectEnd;
+        //}
         break;
 
-      case KEY_ICON_4:
+      case KEY_ICON_2: //Tobbe
         if (infoPrintSummary.name[0] != 0)
           printInfoPopup();
         break;
