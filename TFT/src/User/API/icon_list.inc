@@ -144,5 +144,9 @@ X_ICON (CASE_LIGHT)
 X_ICON (Z_ALIGN)
 X_ICON (MESH_EDITOR)
 X_ICON (SAMPLES) //Tobbe
+X_ICON (E0) //Tobbe
+X_ICON (E1) //Tobbe
+X_ICON (E2) //Tobbe
+
 
 //after changing/adding/removing an icon, change the ICON_FLASH_SIGN in Settings.h

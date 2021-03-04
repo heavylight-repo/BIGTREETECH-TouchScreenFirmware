@@ -295,3 +295,6 @@ X_WORD (Z_ALIGN)
 X_WORD (INIT)
 X_WORD (TOUCHMI)
 X_WORD (SAMPLES) //Tobbe
+X_WORD (E0) //Tobbe
+X_WORD (E1) //Tobbe
+X_WORD (E2) //Tobbe

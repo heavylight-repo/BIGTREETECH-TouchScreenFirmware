@@ -136,7 +136,7 @@
     #define STRING_Z_DEC                  "Z-"
     #define STRING_X                      "X"
     #define STRING_Y                      "Y"
-    #define STRING_Z                      "Z"
+    #define STRING_Z                      "Pip1" //Tobbe
     #define STRING_001_MM                 "0.01mm"
     #define STRING_01_MM                  "0.1mm"
     #define STRING_1_MM                   "1mm"
@@ -297,6 +297,9 @@
     #define STRING_Z_ALIGN                "Z Align"
     #define STRING_INIT                   "Init"
     #define STRING_TOUCHMI                "TouchMi"
-    #define STRING_SAMPLES               "Samples" //Tobbe
+    #define STRING_SAMPLES                "Samples" //Tobbe
+    #define STRING_E0                     "Pip2" //Tobbe
+    #define STRING_E1                     "Push1" //Tobbe
+    #define STRING_E2                     "Push2" //Tobbe
 
 #endif

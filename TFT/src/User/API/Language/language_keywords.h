@@ -305,6 +305,9 @@ extern "C" {
 #define LANG_KEY_INIT                         "label_init:"
 #define LANG_KEY_TOUCHMI                      "label_touchmi:"
 #define LANG_KEY_SAMPLES                      "label_samples:" //Tobbe
+#define LANG_KEY_E0                           "label_E0:" //Tobbe
+#define LANG_KEY_E1                           "label_E2:" //Tobbe
+#define LANG_KEY_E2                           "label_E2:" //Tobbe
 
 #ifdef __cplusplus
 }

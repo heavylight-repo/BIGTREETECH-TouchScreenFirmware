@@ -438,8 +438,8 @@ void menuPrint(void)
           int val = numPadInt((u8 *)tempstr, infoSettings.set_number_of_samples, 0, false);
           infoSettings.set_number_of_samples = NOBEYOND(MIN_SAMPLES, val, MAX_SAMPLES);
 
-          storeCmd("M3000 S%d\n", infoSettings.set_number_of_samples);
-          //mustStoreCmd("M3000 S%d\n", infoSettings.set_number_of_samples);
+          storeCmd("M2001 S%d\n", infoSettings.set_number_of_samples);
+          //mustStoreCmd("M2001 S%d\n", infoSettings.set_number_of_samples);
 
           menuDrawPage(&sourceSelItems);
         }
