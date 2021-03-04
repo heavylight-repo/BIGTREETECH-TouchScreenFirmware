@@ -364,7 +364,7 @@ void menuPrintFromSource(void)
 void menuPrint(void)
 {
   KEY_VALUES  key_num;
-
+/*
   MENUITEMS sourceSelItems = {
     // title
     LABEL_PRINT,
@@ -378,13 +378,13 @@ void menuPrint(void)
     {ICON_BACKGROUND,              LABEL_BACKGROUND},
     {ICON_BACK,                    LABEL_BACK},}
   };
-
-/* //Tobbe
+*/
+ //Tobbe
   MENUITEMS sourceSelItems = {
     // title
     LABEL_PRINT,
     // icon                         label //Tobbe
-    {{ICON_ONTFT_SD,                LABEL_TFTSD},
+    {{ICON_SAMPLES,                LABEL_SAMPLES},
   #ifdef U_DISK_SUPPORT
      {ICON_U_DISK,                  LABEL_U_DISK},
     #define ONBOARD_SD_INDEX 2
@@ -399,10 +399,10 @@ void menuPrint(void)
     {ICON_BACKGROUND,           LABEL_BACKGROUND},
     {ICON_BACK,                 LABEL_BACK}}
   };
-  */
+  
 
-  //sourceSelItems.items[ONBOARD_SD_INDEX].icon = (infoMachineSettings.onboard_sd_support == ENABLED) ? ICON_ONBOARD_SD : ICON_BACKGROUND; //Tobbe
-  //sourceSelItems.items[ONBOARD_SD_INDEX].label.index = (infoMachineSettings.onboard_sd_support == ENABLED) ? LABEL_ONBOARDSD : LABEL_BACKGROUND; //Tobbe
+  sourceSelItems.items[ONBOARD_SD_INDEX].icon = (infoMachineSettings.onboard_sd_support == ENABLED) ? ICON_ONBOARD_SD : ICON_BACKGROUND; //Tobbe
+  sourceSelItems.items[ONBOARD_SD_INDEX].label.index = (infoMachineSettings.onboard_sd_support == ENABLED) ? LABEL_ONBOARDSD : LABEL_BACKGROUND; //Tobbe
 
   menuDrawPage(&sourceSelItems);
   while(infoMenu.menu[infoMenu.cur] == menuPrint)
@@ -411,25 +411,8 @@ void menuPrint(void)
     switch(key_num)
     {
       case KEY_ICON_0:
-        list_mode = infoSettings.file_listmode; //follow list mode setting in TFT sd card
-        infoFile.source = TFT_SD;
-        infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
-        infoMenu.menu[++infoMenu.cur] = menuPowerOff;
-        goto selectEnd;
-      break;
 
-    //#ifdef U_DISK_SUPPORT //Tobbe
-      //case KEY_ICON_1:
-        //list_mode = infoSettings.file_listmode; //follow list mode setting in usb disk
-        //infoFile.source = TFT_UDISK;
-        //infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
-        //infoMenu.menu[++infoMenu.cur] = menuPowerOff;
-        //goto selectEnd;
-      //case KEY_ICON_2:
-    //#else
-      case KEY_ICON_1:
-    //#endif //Tobbe
-        {
+       {
           int MIN_SAMPLES = 1; //Tobbe
           int MAX_SAMPLES = 1000;
           char tempstr[30];
@@ -443,14 +426,36 @@ void menuPrint(void)
 
           menuDrawPage(&sourceSelItems);
         }
+      break;
 
-        //if (infoMachineSettings.onboard_sd_support == ENABLED) //Tobbe
-        //{
-        //  list_mode = true; //force list mode in Onboard sd card
-        //  infoFile.source = BOARD_SD;
-        //  infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;   //TODO: fix here,  onboard sd card PLR feature
-        //  goto selectEnd;
-        //}
+        /*
+        list_mode = infoSettings.file_listmode; //follow list mode setting in TFT sd card
+        infoFile.source = TFT_SD;
+        infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
+        infoMenu.menu[++infoMenu.cur] = menuPowerOff;
+        goto selectEnd;
+      break;*/
+      
+
+    #ifdef U_DISK_SUPPORT
+      case KEY_ICON_1:
+        list_mode = infoSettings.file_listmode; //follow list mode setting in usb disk
+        infoFile.source = TFT_UDISK;
+        infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;
+        infoMenu.menu[++infoMenu.cur] = menuPowerOff;
+        goto selectEnd;
+      case KEY_ICON_2:
+    #else
+      case KEY_ICON_1:
+    #endif
+
+        if (infoMachineSettings.onboard_sd_support == ENABLED) //Tobbe
+        {
+          list_mode = true; //force list mode in Onboard sd card
+          infoFile.source = BOARD_SD;
+          infoMenu.menu[++infoMenu.cur] = menuPrintFromSource;   //TODO: fix here,  onboard sd card PLR feature
+          goto selectEnd;
+        }
         break;
 
       case KEY_ICON_2: //Tobbe

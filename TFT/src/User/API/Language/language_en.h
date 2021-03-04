@@ -171,7 +171,7 @@
     #define STRING_READ_U_DISK_ERROR      "Read U Disk error!"
     #define STRING_U_DISK_INSERTED        "U Disk inserted!"
     #define STRING_U_DISK_REMOVED         "U Disk removed!"
-    #define STRING_ONBOARDSD              "OnboardSD"
+    #define STRING_ONBOARDSD              "Method" //Tobbe
     #define STRING_READ_ONBOARDSD_ERROR   "Read Onboard SD card error!"
     #define STRING_FILAMENT_SENSOR        "Filament sensor"
     #define STRING_FILAMENT_RUNOUT        "Filament runout!"
