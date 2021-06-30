@@ -151,9 +151,9 @@
     #define STRING_READY                  "Ready"
     #define STRING_BUSY                   "Busy processing, please wait..."
     #define STRING_UNCONNECTED            "No Robot attached!" //Tobbe
-    #define STRING_DISCONNECT_INFO        "Now you can control the printer by your computer!"
+    #define STRING_DISCONNECT_INFO        "Now you can control the robot by your computer!" //Tobbe
     #define STRING_LOADING                "Loading..."
-    #define STRING_POWER_FAILED           "Continue printing?" //Question Sign
+    #define STRING_POWER_FAILED           "Continue method?" //Question Sign /Tobbe
     #define STRING_CONTINUE               "Continue"
     #define STRING_CANCEL                 "\u088F Cancel" //Cancel Sign
     #define STRING_ADJUST_TITLE           "Touch Screen Calibration"
@@ -161,7 +161,7 @@
     #define STRING_ADJUST_OK              "Adjustment success"
     #define STRING_ADJUST_FAILED          "Adjustment failed, please try again"
     #define STRING_WARNING                "Warning" //Exclamation Sign
-    #define STRING_STOP_PRINT             "Stop printing?"
+    #define STRING_STOP_PRINT             "Stop Method?" //Tobbe
     #define STRING_CONFIRM                "\u088E OK" //Confirm Sign
     #define STRING_TFTSD                  "Method" //Tobbe
     #define STRING_READ_TFTSD_ERROR       "Read TFT SD card error!"
@@ -177,7 +177,7 @@
     #define STRING_FILAMENT_RUNOUT        "Filament runout!"
     #define STRING_PREHEAT                "Preheat"
     #define STRING_PREHEAT_BOTH           "Both"
-    #define STRING_IS_PAUSE               "Action not allowed while printing.\n \nPause printing?"
+    #define STRING_IS_PAUSE               "Action not allowed while running method.\n \nPause Method?" //Tobbe
     #define STRING_AUTO_SHUT_DOWN         "Auto Power"
     #define STRING_UNIFIEDMOVE            "Movement"
     #define STRING_UNIFIEDHEAT            "Heat/Fan"
@@ -250,7 +250,7 @@
     #define STRING_SWAP_RECOVER_FEEDRATE  "Swap recover feedrate"
     #define STRING_RECOVER_LENGTH         "Extra recover length"
     #define STRING_SWAP_RECOVER_LENGTH    "Extra recover swap length"
-    #define STRING_START_PRINT            "Start Printing:\n %s?"
+    #define STRING_START_PRINT            "Start:\n %s?" //Tobbe
     #define STRING_ACK_NOTIFICATION       "ACK notification style"
     #define STRING_LEVELING_EDGE_DISTANCE "Bed edge distance"
     #define STRING_XY_UNLOCK              "Disarm XY"
@@ -285,7 +285,7 @@
     #define STRING_PRINT_FINISHED         "Print finished"
     #define STRING_MAIN_SCREEN            "Main"
     #define STRING_PREVIOUS_PRINT_DATA    "Brief"
-    #define STRING_PRINT_TIME             "Print Time: %02u:%02u:%02u\n"
+    #define STRING_PRINT_TIME             "Method Time: %02u:%02u:%02u\n" //Tobbe
     #define STRING_FILAMENT_LENGTH        "Filament length: %1.2fm\n"
     #define STRING_FILAMENT_WEIGHT        "Filament weight: %1.2fg\n"
     #define STRING_FILAMENT_COST          "Filament cost: %1.2f\n"

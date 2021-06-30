@@ -28,7 +28,7 @@ void menuTouchMi(void)
         storeCmd("M851 Z0\n");
         storeCmd("G28\n");
         storeCmd("G1 Z0 F200\n");
-        storeCmd("M211 S0\n");
+        //storeCmd("M211 S0\n"); //Tobbe
         break;
 
       case KEY_ICON_1:
@@ -36,7 +36,7 @@ void menuTouchMi(void)
         break;
 
       case KEY_ICON_2:
-          mustStoreCmd("M211 S1\n");
+          //mustStoreCmd("M211 S1\n"); //Tobbe
           mustStoreCmd("G28 X Y\n");
         if (infoMachineSettings.EEPROM == 1)
         {

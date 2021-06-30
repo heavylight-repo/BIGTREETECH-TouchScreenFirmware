@@ -341,7 +341,7 @@ void parseACK(void)
         storeCmd("M92\n");  // Steps/mm of extruder is an important parameter for Smart filament runout
                             // Avoid can't getting this parameter due to disabled M503 in Marlin
         storeCmd("M115\n");
-        storeCmd("M211\n"); // retrieve the software endstops state
+        //storeCmd("M211\n"); // retrieve the software endstops state //Tobbe
       }
       infoHost.connected = true;
     }

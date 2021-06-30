@@ -240,18 +240,18 @@ static inline void toggleInfo(void)
     {
       currentTool = (currentTool + 1) % infoSettings.hotend_count;
       RAPID_SERIAL_LOOP();  //perform backend printing loop before drawing to avoid printer idling
-      reValueNozzle(EXT_ICON_POS);
+      //reValueNozzle(EXT_ICON_POS); //Tobbe
     }
 
     if ((infoSettings.fan_count + infoSettings.fan_ctrl_count) > 1)
     {
       currentFan = (currentFan + 1) % (infoSettings.fan_count + infoSettings.fan_ctrl_count);
       RAPID_SERIAL_LOOP();  //perform backend printing loop before drawing to avoid printer idling
-      reDrawFan(FAN_ICON_POS);
+      //reDrawFan(FAN_ICON_POS); //Tobbe
     }
     currentSpeedID = (currentSpeedID + 1) % 2;
     RAPID_SERIAL_LOOP();  //perform backend printing loop before drawing to avoid printer idling
-    reDrawSpeed(SPD_ICON_POS);
+    //reDrawSpeed(SPD_ICON_POS); /Tobbe
     speedQuery();
     if (infoFile.source >= BOARD_SD)
       coordinateQuery();
@@ -262,15 +262,15 @@ static inline void toggleInfo(void)
 
 static inline void printingDrawPage(void)
 {
-  //  Scroll_CreatePara(&titleScroll, infoFile.title,&titleRect);
-  reValueNozzle(EXT_ICON_POS);
-  reValueBed(BED_ICON_POS);
-  reDrawFan(FAN_ICON_POS);
-  reDrawTime(TIM_ICON_POS);
+  //  Scroll_CreatePara(&titleScroll, infoFile.title,&titleRect); //Tobbe
+  //reValueNozzle(EXT_ICON_POS);
+  //reValueBed(BED_ICON_POS);
+  //reDrawFan(FAN_ICON_POS);
+  //reDrawTime(TIM_ICON_POS);
   reDrawProgress(TIM_ICON_POS);
-  nextLayerDrawTime = 0; // Draw layer now
-  reDrawLayer(Z_ICON_POS);
-  reDrawSpeed(SPD_ICON_POS);
+  //nextLayerDrawTime = 0; // Draw layer now
+  //reDrawLayer(Z_ICON_POS);
+  //reDrawSpeed(SPD_ICON_POS);
 }
 
 void drawPrintInfo(void)
@@ -343,8 +343,8 @@ void menuPrinting(void)
       {ICON_BACKGROUND, LABEL_BACKGROUND},
       {ICON_BACKGROUND, LABEL_BACKGROUND},
       {ICON_BACKGROUND, LABEL_BACKGROUND},
-      {ICON_BACKGROUND, LABEL_BABYSTEP},
-      {ICON_MORE,       LABEL_MORE},
+      {ICON_BACKGROUND, LABEL_BACKGROUND},
+      {ICON_BACKGROUND, LABEL_BACKGROUND},
       {ICON_STOP,       LABEL_STOP}}};
 
   uint8_t nowFan[MAX_FAN_COUNT] = {0};
@@ -372,7 +372,7 @@ void menuPrinting(void)
   {
     printingItems.items[KEY_ICON_4] = itemIsPause[lastPause];
     printingItems.items[KEY_ICON_5].icon = (infoFile.source < BOARD_SD && infoPrinting.model_icon) ?
-                                            ICON_PREVIEW : ICON_BABYSTEP;
+                                            ICON_PREVIEW : ICON_BACKGROUND; //Tobbe
   }
   menuDrawPage(&printingItems);
   printingDrawPage();
@@ -380,7 +380,7 @@ void menuPrinting(void)
     drawPrintInfo();
 
   while (infoMenu.menu[infoMenu.cur] == menuPrinting)
-  {
+  {/*
     //    Scroll_DispString(&titleScroll, LEFT); //Scroll display file name will take too many CPU cycles
 
     //check nozzle temp change
@@ -408,7 +408,7 @@ void menuPrinting(void)
       nowFan[currentFan] = fanGetCurSpeed(currentFan);
       RAPID_SERIAL_LOOP(); //perform backend printing loop before drawing to avoid printer idling
       reDrawFan(FAN_ICON_POS);
-    }
+    }*/
 
     //check printing progress
     if (infoPrinting.size != 0)
@@ -441,7 +441,7 @@ void menuPrinting(void)
       RAPID_SERIAL_LOOP();  //perform backend printing loop before drawing to avoid printer idling
       reDrawLayer(Z_ICON_POS);
     }
-
+/*
     //check change in speed or flow
     if (curspeed[currentSpeedID] != speedGetCurPercent(currentSpeedID))
     {
@@ -449,7 +449,7 @@ void menuPrinting(void)
       RAPID_SERIAL_LOOP(); //perform backend printing loop before drawing to avoid printer idling
       reDrawSpeed(SPD_ICON_POS);
     }
-
+*/
     // check if print is paused
     if (lastPause != isPause())
     {
@@ -502,12 +502,12 @@ void menuPrinting(void)
           else
             infoMenu.cur = 0;
         #else
-          infoMenu.menu[++infoMenu.cur] = menuBabystep;
+          //infoMenu.menu[++infoMenu.cur] = menuBabystep; //Tobbe
         #endif
         break;
 
       case KEY_ICON_6:
-        infoMenu.menu[++infoMenu.cur] = menuMore;
+        //infoMenu.menu[++infoMenu.cur] = menuMore; //Tobbe
         break;
 
       case KEY_ICON_7:
